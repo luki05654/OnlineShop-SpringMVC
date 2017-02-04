@@ -3,6 +3,7 @@ package org.mvc.tutorial.controller;
 import java.math.BigDecimal;
 
 import org.mvc.tutorial.domain.Product;
+import org.mvc.tutorial.views.ViewPages;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,6 @@ public class ProductController {
 
 		model.addAttribute(PRODUCT, iphone);
 		
-		return "products";
+		return ViewPages.PRODUCTS;
 	}
 }

@@ -1,5 +1,6 @@
 package org.mvc.tutorial;
 
+import org.mvc.tutorial.views.ViewPages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class HomeController {
 		model.addAttribute(GREETING, greetingVal );
 		model.addAttribute(TAGLINE, taglineVal );
 		
-		return "welcome";
+		return ViewPages.WELCOME;
 	}
 	
 }
