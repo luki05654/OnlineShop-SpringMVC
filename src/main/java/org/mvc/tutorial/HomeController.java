@@ -24,6 +24,8 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/")
 	public String home(Model model) {	
+		logger.info("Inside HomeController: home()");
+		
 		greetingVal = "Witaj w sklepie internetowym!";
 		taglineVal = "W jedyym takim sklepie";
 		
