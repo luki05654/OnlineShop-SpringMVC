@@ -6,4 +6,5 @@ import org.mvc.tutorial.domain.Product;
 
 public interface ProductRepository {
 	List<Product> getAllProducts();
+	Product getProductById(String id);
 }

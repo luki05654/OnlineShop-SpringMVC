@@ -1,9 +1,6 @@
 package org.mvc.tutorial.controller;
 
-import java.math.BigDecimal;
-
-import org.mvc.tutorial.domain.Product;
-import org.mvc.tutorial.domain.repository.ProductRepository;
+import org.mvc.tutorial.domain.service.ProductService;
 import org.mvc.tutorial.views.ViewPages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +12,12 @@ public class ProductController {
 	private final static String PRODUCTS = "products";
 	
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductService productService;
 	
 	@RequestMapping("/products")
 	public String list(Model model) {
 
-		model.addAttribute(PRODUCTS, productRepository.getAllProducts());
+		model.addAttribute(PRODUCTS, productService.getAllProducts());
 		
 		return ViewPages.PRODUCTS;
 	}

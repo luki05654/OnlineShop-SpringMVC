@@ -1,4 +1,4 @@
-package org.mvc.tutorial;
+package org.mvc.tutorial.controller;
 
 import org.mvc.tutorial.views.ViewPages;
 import org.slf4j.Logger;
