@@ -14,9 +14,8 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping("/products")
+	@RequestMapping("/" + ViewPages.PRODUCTS)
 	public String list(Model model) {
-
 		model.addAttribute(PRODUCTS, productService.getAllProducts());
 		
 		return ViewPages.PRODUCTS;

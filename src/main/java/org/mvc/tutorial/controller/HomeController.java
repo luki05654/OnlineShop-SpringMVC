@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	private final static Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	private final static String GREETING = "greeting";	
-	private final static String TAGLINE = "tagline";
+	private final static String GREETING_KEY = "greeting";	
+	private final static String TAGLINE_KEY = "tagline";
 	
 	private String greetingVal;
 	private String taglineVal;	
@@ -30,8 +30,8 @@ public class HomeController {
 		greetingVal = "Witaj w sklepie internetowym!";
 		taglineVal = "W jedyym takim sklepie";
 		
-		model.addAttribute(GREETING, greetingVal );
-		model.addAttribute(TAGLINE, taglineVal );
+		model.addAttribute(GREETING_KEY, greetingVal );
+		model.addAttribute(TAGLINE_KEY, taglineVal );
 		
 		return ViewPages.WELCOME;
 	}
