@@ -1,10 +1,14 @@
 package org.mvc.tutorial.domain.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.mvc.tutorial.domain.Product;
-import org.springframework.stereotype.Service;
 
 public interface ProductService {
 	List<Product> getAllProducts();
+	Product getProductById(String id);
+	List<Product> getProductsByCategory(String category);
+	Set<Product> getProductsByFilter(Map<String, List<String>> filterParams);
 }
