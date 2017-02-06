@@ -8,7 +8,6 @@ import org.mvc.tutorial.views.ViewPages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,5 +55,16 @@ public class ProductController {
 		model.addAttribute(PRODUCT_KEY, productService.getProductById(productId));
 		
 		return ViewPages.PRODUCT;
+	}
+	
+	@RequestMapping("/{category}/{price}")
+	public String getByAdvancedFilter(Model model, 
+			@PathVariable("category") String category,
+			@MatrixVariable(pathVar="price") Map<String, String> priceFilter,
+			@RequestParam("manufacturer") String manufacturer) {
+		
+		model.addAttribute(PRODUCTS_KEY, productService.getProductsByCategoryPriceScopeAndManufacturer(category, priceFilter, manufacturer));
+		
+		return ViewPages.PRODUCTS;
 	}
 }

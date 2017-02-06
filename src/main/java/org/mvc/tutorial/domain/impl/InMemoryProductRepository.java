@@ -102,4 +102,28 @@ public class InMemoryProductRepository implements ProductRepository {
 		return productsByCategory;
 	}
 
+	@Override
+	public List<Product> getProductsByCategoryPriceScopeAndManufacturer(String category, Map<String, String> priceFilter, String manufacturer) {
+		List<Product> results = new ArrayList<>();
+		
+		if(priceFilter.containsKey("low") && priceFilter.containsKey("high")) {
+			BigDecimal lowPrice = new BigDecimal(priceFilter.get("low"));
+			BigDecimal highPrice = new BigDecimal(priceFilter.get("high"));
+			BigDecimal productPrice;
+			
+			for(Product product: listOfProducts) {
+				if(category.equalsIgnoreCase(product.getCategory()) && manufacturer.equalsIgnoreCase(product.getManufacturer())) {
+					productPrice = product.getUnitPrice();
+					
+					if((productPrice.compareTo(lowPrice) == 0 || productPrice.compareTo(lowPrice) == 1) 
+							&& (productPrice.compareTo(highPrice) == -1 || productPrice.compareTo(highPrice) == 0)) {
+						results.add(product);
+					}
+				}
+			}
+		}		
+		
+		return results;
+	}
+
 }
