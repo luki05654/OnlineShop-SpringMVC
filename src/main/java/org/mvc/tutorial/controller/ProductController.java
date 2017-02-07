@@ -3,14 +3,17 @@ package org.mvc.tutorial.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.mvc.tutorial.domain.Product;
 import org.mvc.tutorial.domain.service.ProductService;
 import org.mvc.tutorial.views.ViewPages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -18,53 +21,71 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
 	private final static String PRODUCTS_KEY = "products";
 	private static final String PRODUCT_KEY = "product";
-	
+	private static final String NEW_PRODUCT_KEY = "newProduct";
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@RequestMapping
 	public String list(Model model) {
 		model.addAttribute(PRODUCTS_KEY, productService.getAllProducts());
-		
+
 		return ViewPages.PRODUCTS;
 	}
-	
+
 	@RequestMapping("/{category}")
 	public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
 		model.addAttribute(PRODUCTS_KEY, productService.getProductsByCategory(productCategory));
-		
+
 		return ViewPages.PRODUCTS;
 	}
-	
+
 	@RequestMapping("/all")
 	public String allProducts(Model model) {
 		model.addAttribute(PRODUCTS_KEY, productService.getAllProducts());
-		
+
 		return ViewPages.PRODUCTS;
 	}
-	
+
 	@RequestMapping("/filter/{ByCriteria}")
-	public String getProductsByFilter(@MatrixVariable(pathVar="ByCriteria") Map<String,List<String>> filterParams, Model model) {
+	public String getProductsByFilter(@MatrixVariable(pathVar = "ByCriteria") Map<String, List<String>> filterParams,
+			Model model) {
 		model.addAttribute("products", productService.getProductsByFilter(filterParams));
-		
+
 		return ViewPages.PRODUCTS;
 	}
-	
+
 	@RequestMapping("/product")
 	public String getProductById(Model model, @RequestParam("id") String productId) {
 		model.addAttribute(PRODUCT_KEY, productService.getProductById(productId));
-		
+
 		return ViewPages.PRODUCT;
 	}
-	
+
 	@RequestMapping("/{category}/{price}")
 	public String getByAdvancedFilter(Model model, 
 			@PathVariable("category") String category,
-			@MatrixVariable(pathVar="price") Map<String, String> priceFilter,
+			@MatrixVariable(pathVar = "price") Map<String, String> priceFilter,
 			@RequestParam("manufacturer") String manufacturer) {
-		
-		model.addAttribute(PRODUCTS_KEY, productService.getProductsByCategoryPriceScopeAndManufacturer(category, priceFilter, manufacturer));
-		
+
+		model.addAttribute(PRODUCTS_KEY,
+				productService.getProductsByCategoryPriceScopeAndManufacturer(category, priceFilter, manufacturer));
+
 		return ViewPages.PRODUCTS;
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String getAddNewProductForm(Model model) {
+		Product newProduct = new Product();
+		model.addAttribute(NEW_PRODUCT_KEY, newProduct);
+		
+		return ViewPages.ADD_PRODUCT;
+	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct) {
+		productService.addProduct(newProduct);
+		
+		return "redirect:/" + ViewPages.PRODUCTS;
 	}
 }
