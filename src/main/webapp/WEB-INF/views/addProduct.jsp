@@ -48,14 +48,7 @@
 						<div class="col-lg-10">
 							<form:textarea id="description" path="description" rows="2"/>
 						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-lg-2" for="discontinued">Wycofany</label>
-						<div class="col-lg-10">
-							<form:checkbox id="discontinued" path="discontinued"/>
-						</div>
-					</div>
+					</div>					
 
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="unitPrice">Cena</label>
@@ -82,13 +75,6 @@
 						<label class="control-label col-lg-2" for="unitsInStock">Liczba dostępnych sztuk</label>
 						<div class="col-lg-10">
 							<form:input id="unitsInStock" path="unitsInStock"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-lg-2" for="unitsInOrder">Liczba zamawianych sztuk</label>
-						<div class="col-lg-10">
-							<form:input id="unitsInOrder" path="unitsInOrder"/>
 						</div>
 					</div>
 
