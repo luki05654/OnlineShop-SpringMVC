@@ -6,4 +6,5 @@ public abstract class ViewPages {
 	public final static String PRODUCT = "product";
 	public final static String CUSTOMERS = "customers";
 	public final static String ADD_PRODUCT = "addProduct";
+	public final static String LOGIN = "login";
 }
