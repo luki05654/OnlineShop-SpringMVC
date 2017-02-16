@@ -41,6 +41,12 @@
 										<span class="glyphicon-info-sign glyphicon"/></span> Szczegóły
 									</a>
 								</p>
+								<p>
+									<spring:message code="addProdcut.form.productManual.label"/> :
+									<a href='<c:url value="/resources/manuals/${product.productId}.pdf"></c:url>'>
+										${product.name}
+									</a>
+								</p>
 							</div>
 						</div>
 					</div>

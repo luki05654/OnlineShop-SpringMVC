@@ -104,9 +104,18 @@ public class ProductController {
 			try {
 				productImage.transferTo(
 						new File(rootDirectory + "resources\\images\\" + newProduct.getProductId() + ".png"));
-			} 
-			catch (Exception e) {
+			} catch (Exception e) {
 				throw new RuntimeException("Niepowodzenie podczas próby zapisu obrazka produktu", e);
+			}
+		}
+		
+		MultipartFile productManual = newProduct.getProductManual();
+		if (productManual != null && !productManual.isEmpty()) {
+			try {
+				productManual.transferTo(
+						new File(rootDirectory + "resources\\manuals\\" + newProduct.getProductId() + ".pdf"));
+			} catch (Exception e) {
+				throw new RuntimeException("Niepowodzenie podczas próby zapisu instrukcji obsługi produktu", e);
 			}
 		}
 
@@ -118,6 +127,7 @@ public class ProductController {
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder) {
 		binder.setDisallowedFields("unitsInOrder", "discontinued");
-		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category", "condition", "unitsInStock", "productImage");
+		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
+				"condition", "unitsInStock", "productImage", "productManual");
 	}
 }
