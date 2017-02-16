@@ -33,7 +33,13 @@ public class HomeController {
 		model.addAttribute(GREETING_KEY, greetingVal );
 		model.addAttribute(TAGLINE_KEY, taglineVal );
 		
-		return ViewPages.WELCOME;
+		return "forward:/welcome/greeting";
+		//return ViewPages.WELCOME;
 	}
 	
+	@RequestMapping(value = "/welcome/greeting")
+	public String greeting() {
+		return ViewPages.WELCOME;
+		//return "redirect:/welcome/greeting";
+	}
 }

@@ -2,6 +2,8 @@ package org.mvc.tutorial.domain;
 
 import java.math.BigDecimal;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * Klasa reprezentuj¹ca produkt
  */
@@ -16,6 +18,7 @@ public class Product {
 	private long unitsInOrder;
 	private boolean discontinued;
 	private String condition;
+	private MultipartFile productImage;
 
 	/** Konstruktor bezparametrowy */
 	public Product() {
@@ -24,9 +27,12 @@ public class Product {
 	/**
 	 * Konstruktor pobieraj¹cy trzy podstawowe parametry
 	 * 
-	 * @param productId identyfikator
-	 * @param name nazwa
-	 * @param unitPrice cena
+	 * @param productId
+	 *            identyfikator
+	 * @param name
+	 *            nazwa
+	 * @param unitPrice
+	 *            cena
 	 */
 	public Product(String productId, String name, BigDecimal unitPrice) {
 		this.productId = productId;
@@ -114,6 +120,14 @@ public class Product {
 		this.condition = condition;
 	}
 
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -137,5 +151,5 @@ public class Product {
 		} else if (!productId.equals(other.productId))
 			return false;
 		return true;
-	}	
+	}
 }
