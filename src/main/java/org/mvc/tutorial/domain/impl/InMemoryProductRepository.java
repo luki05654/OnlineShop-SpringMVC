@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.mvc.tutorial.domain.Product;
 import org.mvc.tutorial.domain.repository.ProductRepository;
+import org.mvc.tutorial.exception.ProductNotFoundException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -52,9 +53,17 @@ public class InMemoryProductRepository implements ProductRepository {
 	@Override
 	public Product getProductById(String productId) {
 		Product productById = null;
+		boolean exists = false;
+		
+		for(Product product: listOfProducts) {
+			if(productId.equalsIgnoreCase(product.getProductId())) {
+				exists = true;
+				break;
+			}
+		}
 
-		if (productId == null) {
-			throw new IllegalArgumentException("productId = null");
+		if (productId == null || !exists) {
+			throw new ProductNotFoundException(productId);
 		}
 
 		for (Product product : listOfProducts) {
