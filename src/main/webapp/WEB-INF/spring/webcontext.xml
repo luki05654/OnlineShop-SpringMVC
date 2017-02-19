@@ -14,6 +14,10 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven enable-matrix-variables="true" />
+	
+	<mvc:interceptors>
+		<bean class="org.mvc.tutorial.interceptor.PerformanceMonitorInterceptor"/>
+	</mvc:interceptors>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
