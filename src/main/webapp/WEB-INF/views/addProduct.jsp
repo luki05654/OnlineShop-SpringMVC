@@ -25,6 +25,9 @@
 				<a href='<c:url value="/j_spring_security_logout" />' class="btn btn-danger btn-mini pull-right">
 					Wyloguj się
 				</a>
+				<div class="pull-right" style="padding-right:50px">
+					<a href="?language=pl" >polski</a>|<a href="?language=en">angielski</a>
+				</div>
 			</div>
 		</section>
 
@@ -42,58 +45,75 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-lg-2" for="name">Nazwa</label>
+						<label class="control-label col-lg-2" for="name">
+							<spring:message code="addProduct.form.name.label"/>							
+						</label>
 						<div class="col-lg-10">
 							<form:input id="name" path="name"/>
 						</div>
 					</div>
 					
 					<div class="form-group">
-					<label class="control-label col-lg-2" for="description">Opis</label>
+					<label class="control-label col-lg-2" for="description">
+						<spring:message code="addProduct.form.description.label"/>
+					</label>
 						<div class="col-lg-10">
 							<form:textarea id="description" path="description" rows="2"/>
 						</div>
 					</div>					
 
 					<div class="form-group">
-						<label class="control-label col-lg-2" for="unitPrice">Cena</label>
+						<label class="control-label col-lg-2" for="unitPrice">
+							<spring:message code="addProduct.form.unitPrice.label"/>
+						</label>
 						<div class="col-lg-10">
 							<form:input id="unitPrice" path="unitPrice"/>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-lg-2" for="manufacturer">Producent</label>
+						<label class="control-label col-lg-2" for="manufacturer">
+							<spring:message code="addProduct.form.manufacturer.label"/>
+						</label>
 						<div class="col-lg-10">
 							<form:input id="manufacturer" path="manufacturer"/>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-lg-2" for="category">Kategoria</label>
+						<label class="control-label col-lg-2" for="category">
+							<spring:message code="addProduct.form.category.label"/>
+						</label>
 						<div class="col-lg-10">
 							<form:input id="category" path="category"/>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-lg-2" for="unitsInStock">Liczba dostępnych sztuk</label>
+						<label class="control-label col-lg-2" for="unitsInStock">
+							<spring:message code="addProduct.form.unitsInStock.label"/>
+						</label>
 						<div class="col-lg-10">
 							<form:input id="unitsInStock" path="unitsInStock"/>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-lg-2" for="condition">Stan</label>
+						<label class="control-label col-lg-2" for="condition">
+							<spring:message code="addProduct.form.condition.label"/>
+						</label>
 						<div class="col-lg-10">
-							<form:radiobutton path="condition" value="New" />Nowy
-							<form:radiobutton path="condition" value="Old" />Używany
-							<form:radiobutton path="condition" value="Refurbished"/>Odnowiony
+							<form:radiobutton path="condition" value="New" />
+								<spring:message code="addProduct.form.condition.new.label"/>
+							<form:radiobutton path="condition" value="Old" />
+								<spring:message code="addProduct.form.condition.secondhend.label"/>
+							<form:radiobutton path="condition" value="Refurbished"/>
+								<spring:message code="addProduct.form.condition.repaired.label"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="productImage">
-							<spring:message code="addProdcut.form.productImage.label"/>
+							<spring:message code="addProduct.form.productImage.label"/>
 						</label>
 						<div class="col-lg-10">
 							<form:input id="productImage" path="productImage" type="file" class="form:input-large" />
@@ -101,7 +121,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="productManual">
-							<spring:message code="addProdcut.form.productManual.label"/>
+							<spring:message code="addProduct.form.productManual.label"/>
 						</label>
 						<div class="col-lg-10">
 							<form:input id="productManual" path="productManual" type="file" class="form:input-large" />

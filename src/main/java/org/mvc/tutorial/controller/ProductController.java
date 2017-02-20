@@ -147,6 +147,6 @@ public class ProductController {
 	public void initialiseBinder(WebDataBinder binder) {
 		binder.setDisallowedFields("unitsInOrder", "discontinued");
 		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
-				"condition", "unitsInStock", "productImage", "productManual");
+				"condition", "unitsInStock", "productImage", "productManual", "language");
 	}
 }
