@@ -143,6 +143,11 @@ public class ProductController {
 		return "redirect:/" + ViewPages.PRODUCTS;
 	}
 
+	@RequestMapping("/invalidPromoCode")
+	public String invalidPromoCode() {
+		return ViewPages.INVALID_PROMO_CODE;
+	}
+	
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder) {
 		binder.setDisallowedFields("unitsInOrder", "discontinued");

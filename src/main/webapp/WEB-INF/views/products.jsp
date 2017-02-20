@@ -42,7 +42,7 @@
 									</a>
 								</p>
 								<p>
-									<spring:message code="addProdcut.form.productManual.label"/> : <br>
+									<spring:message code="addProduct.form.productManual.label"/> : <br>
 									<a href='<c:url value="/resources/manuals/${product.productId}.pdf"></c:url>'>
 										${product.name} PDF
 									</a>

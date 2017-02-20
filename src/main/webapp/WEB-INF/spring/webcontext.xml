@@ -20,6 +20,11 @@
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="language" />
 		</bean>
+		<bean class="org.mvc.tutorial.interceptor.PromoCodeInterceptor">
+			<property name="promoCode" value="OF3RTA" />
+			<property name="errorRedirect" value="invalidPromoCode" />
+			<property name="offerRedirect" value="products" />
+		</bean>
 	</mvc:interceptors>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
