@@ -11,6 +11,7 @@ import org.mvc.tutorial.domain.Product;
 import org.mvc.tutorial.domain.service.ProductService;
 import org.mvc.tutorial.exception.NoProductsFoundUnderCategoryException;
 import org.mvc.tutorial.exception.ProductNotFoundException;
+import org.mvc.tutorial.validator.UnitsInStockValidator;
 import org.mvc.tutorial.views.ViewPages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,8 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private UnitsInStockValidator unitsInStockValidator;
 
 	@RequestMapping
 	public String list(Model model) {
@@ -156,6 +159,7 @@ public class ProductController {
 	
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder) {
+		binder.setValidator(unitsInStockValidator);
 		binder.setDisallowedFields("unitsInOrder", "discontinued");
 		binder.setAllowedFields("productId", "name", "unitPrice", "description", "manufacturer", "category",
 				"condition", "unitsInStock", "productImage", "productManual", "language");
