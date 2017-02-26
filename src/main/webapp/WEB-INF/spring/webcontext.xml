@@ -60,5 +60,15 @@
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
 
+	<bean id="unitsInStockValidator" class="org.mvc.tutorial.validator.UnitsInStockValidator" />
+
+	<bean id="productValidator" class="org.mvc.tutorial.validator.ProductValidator">
+		<property name="springValidators">
+			<set>
+				<ref bean="unitsInStockValidator" />
+			</set>
+		</property>
+	</bean>
+
 	<context:component-scan base-package="org.mvc.tutorial" />
 </beans>
