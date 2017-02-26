@@ -8,6 +8,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.mvc.tutorial.validator.Category;
+import org.mvc.tutorial.validator.ProductId;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public class Product {
 	@Pattern(regexp="P[0-9]+", message="{Pattern.Product.productId.validation}")
+	@ProductId
 	private String productId;
 	
 	@Size(min=4, max=50, message="{Size.Product.name.validation}")
@@ -28,7 +31,7 @@ public class Product {
 	private String description;
 	private String manufacturer;
 	
-	@Pattern(regexp="[a-¿A-¯]+", message="{Pattern.Product.category.validation}")
+	@Category
 	private String category;
 	
 	private long unitsInStock;
